@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <title>Kysely Haaga-Helian viihtyvyydestä</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <!-- linkki google-fonttiin -->
+  <link href="https://fonts.googleapis.com/css?family=Catamaran|ZCOOL+KuaiLe" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+    
+
+
+    
+    <!-- lomakkeet -->
+    <div class="container">
+     <div class="row">
+    
+    <form>
+         <fieldset>
+             <h3>Kysely Haaga-Helian viihtyvyydestä</h3>
+             <br>
+             <p>Pyrimme saamaan selville Haaga-Helian Pasilan kampuksen opiskelijoiden mielipiteen koulun viihtyvyydestä. Tähän kyselyyn vastaaminen vie vain muutaman minuutin, ja olemme kiitollisia vastauksistasi!</p>
+             <br>
+             <label>Valitse koulutusmuotosi:</label>
+         <select id="muoto">
+            <option value="tyhjä"> </option>
+          <option value="paiva">päiväopiskelija</option>
+          <option value="monimuoto">monimuoto-opiskelija</option>
+          <option value="muu">jokin muu</option>
+        </select>
+             <br><br>
+                   <label>Kuinka paljon keskimäärin vietät aikaa koulussa viikottain?</label>
+         <select id="aika">
+            <option value="tyhjä"> </option>
+          <option value="alle10">Alle 10 tuntia</option>
+          <option value="1020">10-20 tuntia</option>
+          <option value="2030">20-30 tuntia</option>
+            <option value="yli30">yli 30 tuntia</option>
+        </select>
+             
+             <br><br>
+            
+             
+        Vaikuttaako viihtymisesi koulussa siihen, kuinka usein saavut fyysisesti paikalle oppitunnille?
+             <br><br>
+             <label>
+             <input type="radio" name="paikalla" value="joo"> Kyllä
+             </label>
+             <label>
+             <input type="radio" name="paikalla" value="ei"> Ei
+             </label>
+             <br><br>
+             Mitkä asiat vaikuttavat viihtymiseesi koulussa?
+             
+             <br><br>
+             <label>
+             <input type="checkbox" name="asiat" value="avaruus"> Tilojen avaruus
+             </label>
+               <label>
+             <input type="checkbox" name="asiat" value="valo"> Tilojen valaistus
+             </label>
+               <label>
+             <input type="checkbox" name="asiat" value="akustiikka"> Tilojen akustiikka
+             </label>
+               <label>
+             <input type="checkbox" name="asiat" value="sisustus"> Sisustus
+             </label>
+               <label>
+             <input type="checkbox" name="asiat" value="ergonomia"> Työpisteiden kunto ja ergonomia
+             </label>
+               <label>
+             <input type="checkbox" name="asiat" value="laitteisto"> Laitteiston/opiskeluvälineiden kunto
+             </label>
+               <label>
+             <input type="checkbox" name="asiat" value="ilma"> Sisäilman laatu
+             </label>
+               <label>
+             <input type="checkbox" name="asiat" value="ihmiset"> Koulun henkilökunta
+             </label>
+             <br><br>
+             <textarea rows="4" cols="50">Jokin muu, mikä?</textarea>
+             <br><br>
+             <label>Mitkä asiat lisäisivät viihtyvyyttä koulussa?<br>
+        <textarea rows="4" cols="50"></textarea>
+        </label> <br><br> 
+             
+             Vietätkö aikaa koulun tiloissa muuten kuin oppitunneilla?
+             <br><br>
+                     <label>
+             <input type="radio" name="ajanvietto" value="joo"> Kyllä
+             </label>
+             <label>
+             <input type="radio" name="ajanvietto" value="en"> En
+             </label>
+         <br><br>
+             Jos kyllä, niin missä tiloissa?
+             <br><br>
+             <label>
+             <input type="checkbox" name="missa" value="kahvila"> Kahvila
+             </label>
+                  <label>
+             <input type="checkbox" name="missa" value="kirjasto"> Kirjasto
+             </label>
+                  <label>
+             <input type="checkbox" name="missa" value="yhteiset"> Yhteiset työtilat
+             </label>
+                  <label>
+             <input type="checkbox" name="missa" value="suljetut"> Suljetut työtilat
+             </label>
+                  <label>
+             <input type="checkbox" name="missa" value="jokumuu"> Jossain muualla
+             </label>
+             <br><br>
+             <input type="submit" value="Lähetä">
+        <input type="reset" value="Tyhjennä">
+        </fieldset>
+         
+         </form>
+
+    </div>
+    </div>
+
+</body>
+</html> 
