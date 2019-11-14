@@ -1,1 +1,84 @@
 http://myy.haaga-helia.fi/~bgg237/Digiprojekti/tekstikysymykset.html
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-152534967-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-152534967-1');
+</script>
+
+  <meta charset="utf-8">
+  <title>Tekstikysymykset</title>
+   <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet"> 
+    
+    <style> 
+        
+        body{
+              background-image: linear-gradient(DarkCyan, DarkOliveGreen, DarkSlateGray);
+            height: 1200px;
+        }
+        
+        .container {
+                width:100%; max-width: 400px; 
+                margin:auto;
+                margin-top: 70px;
+                font-family: 'Inconsolata', monospace;
+                background-color: rgb(255, 228, 225, 0.7);
+            padding: 10px;
+              border: 3px solid DarkOliveGreen;
+                } 
+        </style>
+    
+</head>
+<body>
+<div class="container">
+    
+    <h1>Tekstikysymykset</h1>
+    <form id="lomake">
+        
+    </form>
+    
+    <!-- linkki jqueryn pääkirjastoon -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <!-- oma scripti -->
+    <script>
+        var lomakekentta = []; //kerätään id-tunnukset tänne
+        
+    $.getJSON("https://ohtukysely4.herokuapp.com/questions", function(data){
+        var items = []; //taulukko, johon kerätään lomake
+        
+        
+        $.each(data, function(key, d) {
+            items.push(d.questionText);
+            items.push("<br><input type=text id="+d.questionId+"><br>")
+            //lomakekenttätaulukkoon id-tunnus
+            lomakekentta.push(d.questionId);
+        });
+        
+        items.push("<br><input type=submit onclick=lahetys() value=Lähetä><br>")
+        
+        // sivun lomakkeen tulostus
+        $("#lomake").append(items.join(""));
+    });
+        
+        function lahetys() { alert(lomakekentta.length);
+            for (i = 0; i < lomakekentta.length; i++) {
+                alert(document.getElementById(lomakekentta[i]).value);
+                
+                
+            }
+        }
+    </script>
+    
+    </div>
+    
+</body>
+</html>
