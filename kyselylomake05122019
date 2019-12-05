@@ -1,0 +1,116 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-152534967-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-152534967-1');
+</script>
+
+  <meta charset="utf-8">
+  <title>Tekstikysymykset</title>
+   <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet"> 
+    
+    <style> 
+        
+        body{
+              background-image: linear-gradient(DarkCyan, DarkOliveGreen, DarkSlateGray);
+            height: 1050px;
+        }
+        
+        .container {
+                width:100%; max-width: 400px; 
+                margin:auto;
+                margin-top: 70px;
+                font-family: 'Inconsolata', monospace;
+                background-color: rgb(255, 228, 225, 0.7);
+            padding: 10px;
+              border: 3px solid DarkOliveGreen;
+                } 
+        input[type=submit]{
+            background-color: DarkOliveGreen;
+            border: 1px solid DarkOliveGreen;
+        }
+        
+        .linkit {
+                width:100%; max-width: 400px; 
+                margin:auto;
+                text-align: center
+                margin-top: 70px;
+                font-family: 'Inconsolata', monospace;
+                padding: 10px;
+        }
+        </style>
+    
+</head>
+<body>
+<div class="container">
+    
+    <h1>Tekstikysymykset</h1>
+    <form id="lomake">
+        
+    </form>
+    
+    <!-- linkki jqueryn pääkirjastoon -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <!-- oma scripti -->
+    <script>
+        var lomakekentta = []; //kerätään id-tunnukset tänne
+        
+    $.getJSON("https://ohtukysely5.herokuapp.com/questions", function(data){
+        var items = []; //taulukko, johon kerätään lomake
+        
+        
+        $.each(data, function(key, d) {
+            items.push(d.questionText);
+            items.push("<br><input type=text id="+d.questionId+"><br>"+"<br>")
+            //lomakekenttätaulukkoon id-tunnus
+            lomakekentta.push(d.questionId);
+        });
+        
+        items.push("<br><input type=submit onclick=lahetys() value=Lähetä><br>")
+        
+        // sivun lomakkeen tulostus
+        $("#lomake").append(items.join(""));
+    });
+        
+        function lahetys() { alert("Vastasitko varmasti kaikkiin kenttiin? Niitä on yhteensä "+ lomakekentta.length + ".");
+             for (i = 0; i < lomakekentta.length; i++) {
+                // alert(document.getElementById(lomakekentta[i]).value);
+                
+                
+           
+             var jsonData = {"answerText":document.getElementById(lomakekentta[i]).value,
+  "question": {"questionId": lomakekentta[i]}
+ };
+
+/* stringify -> muunnetaan JS-olio JSON-olioksi */
+var myJSON = JSON.stringify(jsonData);
+      alert(myJSON);
+                 
+             	$.ajax({
+    url: 'https://ohtukysely5.herokuapp.com/answers',
+    type: 'POST',
+    dataType: 'application/json',
+    contentType: 'application/json',
+    data: myJSON, 
+    success: function() { alert('POST completed. Data:' + myJSON)},
+    error: function() { alert('POST NOT completed. Data:' + myJSON)}
+});
+             }
+                            
+        }
+        
+    </script>
+    
+    </div>
+    
+</body>
+</html>
